@@ -3,8 +3,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var createShoppingCart = require('./app/domain/createShoppingCart');
-var updateShoppingCart = require('./app/domain/updateShoppingCart');
+var createShoppingCart = require('./app/domain_services/createShoppingCart');
+var updateShoppingCart = require('./app/domain_services/updateShoppingCart');
 var Shoppingcart = require('./app/models/shoppingCart');
 
 
@@ -33,7 +33,7 @@ router.route('/shoppingcart')
             cart.save(function (err) {
                 if (err)
                     res.send(err);
-                res.json({ message: 'ShoppingCart created!' });
+                res.json(cart);
             });
         } else {
             res.json({ error: 'invalid shoppingcart!' });
@@ -47,6 +47,7 @@ router.route('/shoppingcart')
             res.json(carts);
         });
     });
+
 
 // routes end with /shoppingcart/:id
 router.route('/shoppingcart/:id')
@@ -71,11 +72,11 @@ router.route('/shoppingcart/:id')
                 newCart.save(function (err) {
                     if (err)
                         res.send(err);
-                    res.json({ message: 'Shoppingcart updated!' });
+                    res.json(newCart);
                 });
             }
             else {
-                res.json({ error: 'Invalid shoppingCart!' });
+                res.json({ error: 'Invalid shoppingCart data!' });
             }
         });
     });

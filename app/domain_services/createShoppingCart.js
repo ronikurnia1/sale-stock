@@ -7,7 +7,7 @@ var createShoppingCart = function (data) {
         // empty
         return null;
     }
-    if (!data.customerName) {
+    if (!data.customerName || data.customerName === '') {
         // no customer name
         return null;
     }

@@ -51,7 +51,7 @@ Development approach using DDD and TDD.
 This application only use one domain model: Shopping cart. Since this is a simple application, I do not use any kind of dependency injection framework. Instead I still inject the model (Shopping cart) into each router via its contructor so I can still do the unit testing and functional API testing as well wothout hit the real database (MongoDB).
 
 The folder structure of the source code is as follow:
-
+```
 |-- app
 |    |-- domain-services       <-- contains all the domain logic/business logic
 |    |-- models                <-- contains domain model of the application
@@ -60,7 +60,7 @@ The folder structure of the source code is as follow:
 |-- test
 |    |-- functional-API-tests  <-- contains all functional API tests
 |    |-- unit-test             <-- contains all unit testing   
-
+```
 
 ### Quality Assesment (Unit test and Functional API test)
 This project has 2 kind of tests: unit test and functional API tests
@@ -69,10 +69,10 @@ To run unit-test only:          **npm run-script unit-test**
 To run functional API test:     **npm run-script api-test**
 To run both testing:            **npm test or npm run-script test**
 
+
 ### Deployment to cloud infrastructure
 If you have a docker machine you can easily build and deploy this appplication into docker image by execute the following script:
-docker build -t API-Test . 
+**docker build -t API-Test .**
 
-This project also has been deploy into a cloud server. You can access it here: http://111.221.107.18:8080/api/shoppingcart
 
 

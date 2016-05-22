@@ -65,6 +65,13 @@ The folder structure of the source code is as follow:
 ### Quality Assesment (Unit test and Functional API test)
 This project has 2 kind of tests: unit test and functional API tests
 
+| Type of test | Command |
+|--------------|---------|
+| Unit test    | npm run-script unit-test |
+| Functional API test | npm run-script api-test |
+| Both test    | npm test |
+
+
 To run unit-test only:          **npm run-script unit-test**
 To run functional API test:     **npm run-script api-test**
 To run both testing:            **npm test or npm run-script test**

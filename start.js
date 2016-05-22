@@ -1,6 +1,6 @@
 var server = require('./server');
 var port = process.env.PORT || 8080;
-var ShoppingCart = require('./app/models/ShoppingCart');
+var ShoppingCart = require('./app/models/shoppingCart');
 
 var shoppingCartRouter = require('./routers/shoppingcart')(ShoppingCart);
 var shoppingCartIdRouter = require('./routers/shoppingcart-id')(ShoppingCart);

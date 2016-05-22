@@ -64,14 +64,15 @@ The folder structure of the source code is as follow:
 
 ### Quality Assesment (Unit test and Functional API test)
 This project has 2 kind of tests: unit test and functional API tests
-To run unit-test only:          npm run-script unit-test
-To run functional API test:     npm run-script api-test
-To run both testing:            npm test or npm run-script test
+
+To run unit-test only:          **npm run-script unit-test**
+To run functional API test:     **npm run-script api-test**
+To run both testing:            **npm test or npm run-script test**
 
 ### Deployment to cloud infrastructure
 If you have a docker machine you can easily build and deploy this appplication into docker image by execute the following script:
 docker build -t API-Test . 
 
-This project also has been deploy into a cloud server. You can access it here: 
+This project also has been deploy into a cloud server. You can access it here: http://111.221.107.18:8080/api/shoppingcart
 
 

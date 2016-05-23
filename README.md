@@ -65,21 +65,178 @@ The folder structure of the source code is as follow:
 ### Quality Assesment (Unit test and Functional API test)
 This project has 2 kind of tests: unit test and functional API tests
 
-| Type of test | Command |
+| **Type of test** | **Command** |
 |--------------|---------|
 | Unit test    | npm run-script unit-test |
 | Functional API test | npm run-script api-test |
 | Both test    | npm test |
 
 
-To run unit-test only:          **npm run-script unit-test**
-To run functional API test:     **npm run-script api-test**
-To run both testing:            **npm test or npm run-script test**
-
 
 ### Deployment to cloud infrastructure
-If you have a docker machine you can easily build and deploy this appplication into docker image by execute the following script:
-**docker build -t API-Test .**
+If you have a docker machine you can easily build and deploy and run this appplication within docker machine by execute the following script:
+**docker build -t API-Test .**  please note the period (.) after space at the end.
 
+### Example of API Requests
 
+#### Get all the shopping cart
 
+```
+GET /api/shoppingcart/ HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 6ec14204-15f7-5ba9-ece7-e7d308a6e525
+```
+#### Create a shopping cart
+```
+POST /api/shoppingcart/ HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: bb60598d-da72-1fb5-de4e-2794350115f8
+
+{
+    "customerName": "Dyana Wedari",
+    "items": [
+        {
+            "code": "55-309",
+            "name": "Produk H",
+            "quantity": 1,
+            "unitPrice": 150000
+        },
+        {
+            "code": "83-200",
+            "name": "Produk E",
+            "quantity": 5,
+            "unitPrice": 120000
+        }
+    ],
+    "discount": {
+        "amount": 500000,
+        "coupon": "5809-0932"
+    }
+}
+```
+#### Get a single shopping cart.
+```
+GET /api/shoppingcart/5741da6bbaebdd7912adb142 HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 2a6bf07a-4b0b-8e56-0e19-ecd827fa9d30
+```
+#### Update existing shopping cart.
+```
+PUT /api/shoppingcart/5741da6bbaebdd7912adb142 HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: c4411d80-4d90-b1b7-de1f-e46add90f4ab
+
+{
+    "customerName": "Dyana Wedari",
+    "items": [
+        {
+            "code": "55-309",
+            "name": "Produk H",
+            "quantity": 1,
+            "unitPrice": 150000
+        },
+        {
+            "code": "83-200",
+            "name": "Produk E",
+            "quantity": 5,
+            "unitPrice": 120000
+        }
+    ],
+    "discount": {
+        "amount": 500000,
+        "coupon": "5809-0932"
+    }
+}
+```
+#### Delete existing shopping cart.
+```
+DELETE /api/shoppingcart/5741da6bbaebdd7912adb142 HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 22d860a6-30b4-55af-02b5-96e11d48f9eb
+
+{
+    "customerName": "Dyana Wedari",
+    "items": [
+        {
+            "code": "55-309",
+            "name": "Produk H",
+            "quantity": 1,
+            "unitPrice": 150000
+        },
+        {
+            "code": "83-200",
+            "name": "Produk E",
+            "quantity": 5,
+            "unitPrice": 120000
+        }
+    ],
+    "discount": {
+        "amount": 500000,
+        "coupon": "5809-0932"
+    }
+}
+```
+#### Add shopping cart item into existing shopping cart.
+```
+POST /api/shoppingcart/574247a35afc0ff07cff53e6/additem HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 9a0c050c-9f77-00b1-7f79-b12f24c627a3
+
+[
+      {
+        "code": "54-569",
+        "name": "Produk HD",
+        "quantity": 1,
+        "unitPrice": 150000,
+        "_id": "574247a35afc0ff07cff53e7"
+      },
+      {
+        "code": "20-238",
+        "name": "Produk ELS",
+        "quantity": 5,
+        "unitPrice": 120000,
+        "_id": "574247a35afc0ff07cff53e8"
+      }
+    ]
+```
+#### Remove shopping cart item from existing shopping cart.
+```
+DELETE /api/shoppingcart/574247a35afc0ff07cff53e6/removeitem HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: cd77df8d-e478-0587-3828-a4bef0c80a10
+
+[{"code": "20-238"}]
+```
+
+#### Update shopping cart discount.
+```
+PUT /api/shoppingcart/574247a35afc0ff07cff53e6/updatediscount HTTP/1.1
+Host: localhost:8080
+Authorization: Basic Og==
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: f28bd00d-79ea-540a-5c56-5046ddb34a43
+
+{"coupon": "784-854", "amount": 250000}
+```
